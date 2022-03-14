@@ -8,21 +8,23 @@ async function currencyConvertor(amountOfMoney, currency) {
     const money = amountOfMoney;
     const usersCurrency = currency;
 
-    let response = await fetch(url);
+    const response = await fetch(url);
+    console.log('--------------------------------------------------------');
     console.log('Request currency...');
 
-    let dataCurrency = await response.json();
+    const dataCurrency = await response.json();
     console.log('Prepering currency...');
 
-    let exchangeRate = await dataCurrency.data[usersCurrency].value;
+    const exchangeRate = await dataCurrency.data[usersCurrency].value;
     console.log('Exchange...');
 
-    let resultOfExchanging = await (money * exchangeRate);
+    const resultOfExchanging = await (money * exchangeRate);
     console.log('Done');
 
     console.log(
       `Exchanging rate: ${exchangeRate}, Result: ${resultOfExchanging} ${usersCurrency}`
     );
+    console.log('--------------------------------------------------------');
   } catch (err) {
     console.log(err);
   }
